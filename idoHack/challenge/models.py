@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import CustomUser
 
 # カテゴリ
 class CategoryModel(models.Model):
@@ -43,7 +44,7 @@ class ChallengeModel(models.Model):
 
     challenge_number = models.IntegerField(default=0, verbose_name="番号") # 課題の番号
 
-    challenge_title = models.CharField(max_length=100,  default="", verbose_name="タイトル") # 課題のタイトル
+    challenge_title = models.CharField(max_length=100,  default="", verbose_name="タイトル", unique=True) # 課題のタイトル
     score = models.IntegerField(default="", verbose_name="配点") # 課題の配点
     flag = models.CharField(max_length=100,  default="", verbose_name="フラグ") # フラグ
     visible = models.BooleanField(default=False, verbose_name="一般ユーザへの公開") # 課題が公開されているかどうか
@@ -65,3 +66,16 @@ class ChallengeModel(models.Model):
 
     class Meta:
         verbose_name = 'Challenge'
+
+
+class SubmitModel(models.Model):
+        challenge_title = models.ForeignKey(ChallengeModel, to_field="challenge_title", on_delete=models.SET_NULL, null=True, verbose_name="課題") # 課題
+        username = models.ForeignKey(CustomUser, to_field="username", on_delete=models.SET_NULL, null=True, verbose_name="ユーザ") # ユーザ
+    
+        submit_time = models.DateTimeField(auto_now_add=True, verbose_name="提出日時") # 提出日時
+    
+        def __str__(self):
+            return self.challenge
+    
+        class Meta:
+            verbose_name = 'Submit'

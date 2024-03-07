@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import CategoryModel, ExerciseModel, ChallengeModel
+from .models import CategoryModel, ExerciseModel, ChallengeModel, SubmitModel
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['category']
@@ -37,8 +37,13 @@ class ChallengeAdmin(admin.ModelAdmin):
         ordering = ['exercise_title' ,'challenge_number']
         readonly_fields = ['created_at', 'updated_at']
 
+
+class SubmitAdmin(admin.ModelAdmin):
+    list_display = ['username', 'challenge_title', 'submit_time']
+    ordering = ['submit_time']
+    readonly_fields = ['username', 'challenge_title', 'submit_time']
+
 admin.site.register(CategoryModel, CategoryAdmin)
 admin.site.register(ExerciseModel, ExerciseAdmin)
 admin.site.register(ChallengeModel, ChallengeAdmin)
-
-#TODO: 検証
+admin.site.register(SubmitModel, SubmitAdmin)
