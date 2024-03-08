@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'challenge.apps.ChallengeConfig',
     'account.apps.AccountConfig',
     'infomation.apps.InfomationConfig',
+    'mdeditor',
 ]
 
 MIDDLEWARE = [
@@ -110,3 +111,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN' 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/media/'

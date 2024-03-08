@@ -1,5 +1,7 @@
 from django.db import models
 from account.models import CustomUser
+from django.db import models
+from mdeditor.fields import MDTextField
 
 # カテゴリ
 class CategoryModel(models.Model):
@@ -66,6 +68,12 @@ class ChallengeModel(models.Model):
 
     class Meta:
         verbose_name = 'Challenge'
+
+class TextBookModel(models.Model):
+    name = models.CharField(max_length=10)
+    Exercise_title = models.ForeignKey(ExerciseModel, on_delete=models.SET_NULL, null=True, verbose_name="演習名") # 演習のタイトル
+    text_page = models.IntegerField()
+    content = MDTextField()
 
 
 class SubmitModel(models.Model):

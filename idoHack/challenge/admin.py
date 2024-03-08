@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import CategoryModel, ExerciseModel, ChallengeModel, SubmitModel
+from .models import CategoryModel, ExerciseModel, ChallengeModel, TextBookModel, SubmitModel
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['category']
@@ -46,4 +46,5 @@ class SubmitAdmin(admin.ModelAdmin):
 admin.site.register(CategoryModel, CategoryAdmin)
 admin.site.register(ExerciseModel, ExerciseAdmin)
 admin.site.register(ChallengeModel, ChallengeAdmin)
+admin.site.register(TextBookModel)
 admin.site.register(SubmitModel, SubmitAdmin)
