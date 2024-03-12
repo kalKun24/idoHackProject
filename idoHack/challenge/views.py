@@ -1,7 +1,10 @@
 from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import CategoryModel, ExerciseModel, ChallengeModel
+from .models import CategoryModel, ExerciseModel, ChallengeModel, SubmitModel
+from account.models import CustomUser
+from django.shortcuts import redirect
+from django.contrib import messages
 
 class ExerciseListView(ListView):
     model = ExerciseModel
@@ -43,3 +46,27 @@ class ChallengeDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['exercise_detail'] = ExerciseModel.objects.get(pk=self.kwargs['pk'])
         return context
+    
+    # Flagのチェック
+    def post(self, request, *args, **kwargs):
+        challenge = ChallengeModel.objects.get(pk=self.kwargs['pks'])
+        user = CustomUser.objects.get(username=request.user)
+        flag = request.POST['submit_flag']
+
+        # ユーザがすでに回答済みかどうか
+        if challenge.flag != flag:
+            messages.add_message(request, messages.ERROR, "不正解です。")
+            
+        elif SubmitModel.objects.filter(challenge_title=challenge, username=user).exists():
+            messages.add_message(request, messages.INFO, "正解です！(ただし、すでに回答済みです)")
+
+        elif challenge.flag == flag:
+            submit = SubmitModel(challenge_title=challenge, username=user)
+            submit.save()
+            user.total_score += challenge.score
+            user.save()
+            messages.add_message(request, messages.SUCCESS, "正解です！おめでとうございます！")
+
+
+        # 自分にリダイレクト
+        return redirect('challenge_detail', pk=self.kwargs['pk'], pks=self.kwargs['pks'])

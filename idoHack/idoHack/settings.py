@@ -1,6 +1,7 @@
 from pathlib import Path
 import environ
 import os
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,4 +126,12 @@ MARKDOWN_DEUX_STYLES = {
         },
         "safe_mode": False,
     },
+}
+
+
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.WARNING: 'alert alert-warning',
+    messages.ERROR: 'alert alert-danger',
 }
