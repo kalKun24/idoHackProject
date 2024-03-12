@@ -1,0 +1,11 @@
+
+{% extends "base.html" %}
+{% load markdown_extras%}
+
+{% block content %}
+
+{% for exercise in exercise_list%}
+<a href="{%url 'exercise_detail' exercise.pk%}">{{exercise.exercise_title}}</a>
+{%endfor%}
+
+{% endblock %}

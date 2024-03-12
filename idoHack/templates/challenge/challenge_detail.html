@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load markdown_extras%}
+
+{% block content %}
+{{challenge_detail.challenge_title}}
+<div id="md">{{challenge_detail.discription|markdown|safe}}</div>
+
+
+<hr>
+
+{% for challenge in challenge_list%}
+<a href="{%url 'challenge_detail' exercise_id challenge.id%}">{{challenge.challenge_title}}</a>
+{%endfor%}
+
+{% endblock %}

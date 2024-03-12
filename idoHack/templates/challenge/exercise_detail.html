@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load markdown_extras%}
+
+{% block content %}
+
+{% for challenge in challenge_list%}
+<a href="{%url 'challenge_detail' exercise_id challenge.id%}">{{challenge.challenge_title}}</a>
+{%endfor%}
+
+{% endblock %}

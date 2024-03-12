@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'infomation.apps.InfomationConfig',
     'mdeditor',
+    'markdown_deux',
 ]
 
 MIDDLEWARE = [
@@ -116,3 +117,12 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
+
+MARKDOWN_DEUX_STYLES = {
+    "default": {
+        "extras": {
+            "code-friendly": None,
+        },
+        "safe_mode": False,
+    },
+}
