@@ -22,7 +22,7 @@ class ExerciseModel(models.Model):
     exercise_number = models.IntegerField(default=0, verbose_name="番号") # 演習の番号
 
     exercise_title = models.CharField(max_length=100, default="", verbose_name="タイトル") # 演習のタイトル
-    exercise_discription = models.TextField(default="", verbose_name="説明") # 演習の説明
+    exercise_discription = MDTextField(default="", verbose_name="説明") # 演習の説明
     visible = models.BooleanField(default=False, verbose_name="一般ユーザへの公開") # 演習が公開されているかどうか
 
     textbook_url = models.URLField(blank=True, verbose_name="教科書URL") # 教科書のURL
@@ -51,7 +51,7 @@ class ChallengeModel(models.Model):
     flag = models.CharField(max_length=100,  default="", verbose_name="フラグ") # フラグ
     visible = models.BooleanField(default=False, verbose_name="一般ユーザへの公開") # 課題が公開されているかどうか
     is_practice = models.BooleanField(default=False, verbose_name="実戦問題に表示する。") # 実戦問題かどうか
-    problem = models.TextField(default="", verbose_name="問題文") # 課題の問題文
+    discription = MDTextField(default="", verbose_name="説明") # 課題の説明
 
     # ヒント3つ
     hint_one = models.CharField(max_length=200, default="", blank=True, verbose_name="ヒントその１")

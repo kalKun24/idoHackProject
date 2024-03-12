@@ -10,7 +10,7 @@ class ExerciseAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ("基本情報", {"fields": ["exercise_title", "exercise_number","category", "visible"]}),
-        ("演習の説明", {"fields": ["exercise_discription"]}),
+        ("演習の説明", {"fields": ["discription"]}),
         ("教科書・解説URL", {"fields": ["textbook_url" , "explanation_url"]}),
         ("その他情報", {"fields": ["created_at", "updated_at"]}),
     ]
@@ -26,7 +26,7 @@ class ChallengeAdmin(admin.ModelAdmin):
     
         fieldsets = [
             ("基本情報", {"fields": ["challenge_title", "challenge_number", "category", "exercise_title", "score", "flag", "visible", "is_practice"]}),
-            ("課題の問題文", {"fields": ["problem"]}),
+            ("課題の問題文", {"fields": ["discription"]}),
             ("ヒント", {"fields": ["hint_one", "hint_two", "hint_three"]}),
             ("その他情報", {"fields": ["created_at", "updated_at"]}),
         ]
