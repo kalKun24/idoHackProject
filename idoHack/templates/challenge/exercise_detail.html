@@ -3,8 +3,31 @@
 
 {% block content %}
 
+<!-- 
 {% for challenge in challenge_list%}
 <a href="{%url 'challenge_detail' exercise_id challenge.id%}">{{challenge.challenge_title}}</a>
-{%endfor%}
 
+{%endfor%}
+-->
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">{{exercise_detail.exercise_title}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{%url 'challenge_list' exercise_detail.id %}">課題</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="#">ランキング</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="#">解説</a>
+  </li>
+ 
+</ul>
+
+
+<div id="md">{{exercise_detail.exercise_discription|markdown|safe}}</div>
+
+<hr>
 {% endblock %}
