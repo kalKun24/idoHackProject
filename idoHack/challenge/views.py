@@ -1,23 +1,24 @@
 from typing import Any
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import CategoryModel, ExerciseModel, ChallengeModel, SubmitModel
 from account.models import CustomUser
 from django.shortcuts import redirect
 from django.contrib import messages
 
-class ExerciseListView(ListView):
+class ExerciseListView(LoginRequiredMixin, ListView):
     model = ExerciseModel
     template_name = 'challenge/exercise_list.html'
     context_object_name = 'exercise_list'
 
 
-class ExerciseDetailView(DetailView):
+class ExerciseDetailView(LoginRequiredMixin, DetailView):
     model = ExerciseModel
     template_name = 'challenge/exercise_detail.html'
     context_object_name = 'exercise_detail'
 
-class ChallengeListView(ListView):
+class ChallengeListView(LoginRequiredMixin, ListView):
     model = ChallengeModel
     template_name = 'challenge/challenge_list.html'
     context_object_name = 'challenge_list'
@@ -36,7 +37,7 @@ class ChallengeListView(ListView):
         context['exercise_detail'] = ExerciseModel.objects.get(pk=self.kwargs['pk'])
         return context
     
-class ChallengeDetailView(DetailView):
+class ChallengeDetailView(LoginRequiredMixin, DetailView):
     model = ChallengeModel
     template_name = 'challenge/challenge_detail.html'
     context_object_name = 'challenge_detail'
