@@ -22,6 +22,7 @@ class ExerciseModel(models.Model):
     exercise_number = models.IntegerField(default=0, verbose_name="番号") # 演習の番号
 
     exercise_title = models.CharField(max_length=100, default="", verbose_name="タイトル") # 演習のタイトル
+    summary = models.TextField(blank=True, default="", verbose_name="概要") # 演習の概要
     exercise_discription = MDTextField(default="", verbose_name="説明") # 演習の説明
     visible = models.BooleanField(default=False, verbose_name="一般ユーザへの公開") # 演習が公開されているかどうか
 
