@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="alert alert-light" role="alert">
+  <h3 class="alert-heading">idoHackへようこそ!!</h3>
+  <p></p>
+  <hr>
+  <p class="mb-0">登録がお済でない方は画面右上<b>「新規登録」から</b></p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">idoHackチュートリアル</h5>
+        <p class="card-text">
+          「idoHackを初めて利用する」</br>
+          「CTFについて知らない」</br>
+          「セキュリティ知識がない」</br>
+          という方は、こちらのチュートリアルから始めましょう!      
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="{%url 'exercise_detail' 1%}" class="btn w-100">チュートリアルへ</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">idoHack演習一覧</h5>
+        <p class="card-text">
+          「idoHackの仕組みを理解している」</br>
+          「CTFを知っている」</br>
+          「セキュリティ知識がない」</br>
+          という方は、こちらの演習に取り組みましょう!
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="{%url 'exercise_list'%}" class="btn w-100">演習一覧へ</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">実戦問題集</h5>
+        <p class="card-text">
+          CTF,セキュリティ知識に自信がある方は、</br>
+          こちらの実戦問題集を解いてみましょう。</br>
+          ※こちらは教科書と解説がありません
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="{%url 'exercise_detail' 6%}" class="btn w-100">実戦問題集へ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
