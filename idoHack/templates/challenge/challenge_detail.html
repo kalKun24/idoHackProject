@@ -10,12 +10,14 @@
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="{%url 'challenge_list' exercise_detail.id %}">課題</a>
   </li>
+  {% if exercise_detail.exercise_title != "実戦問題集"%}
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="#">教科書</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="#">解説</a>
   </li>
+  {% endif %}
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="#">ランキング</a>
   </li>

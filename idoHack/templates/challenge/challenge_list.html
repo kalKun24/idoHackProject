@@ -10,12 +10,14 @@
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="#">課題</a>
   </li>
+  {% if exercise_detail.exercise_title != "実戦問題集"%}
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="#">教科書</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="#">解説</a>
   </li>
+  {% endif %}
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="#">ランキング</a>
   </li>
@@ -35,7 +37,14 @@
         {%for challenge in challenge_list%}
         <tr>
             <th scope="row">{{challenge.challenge_number}}</th>
-            <td><a href="{%url 'challenge_detail' exercise_detail.id challenge.id%}">{{challenge.challenge_title}}</a></td>
+            <td>
+              <a href="{%url 'challenge_detail' exercise_detail.id challenge.id%}">{{challenge.challenge_title}}</a>
+                {%if challenge.is_practice%}
+                {% if exercise_detail.exercise_title != "実戦問題集"%}
+                <span class="badge bg-primary">実戦問題</span>
+                {%endif%}
+                {%endif%}
+            </td>
             <td>{{challenge.score}}</td>
             <td>{{challenge.category.category}}</td>
             <td>{{challenge.cleared_count}}</td>

@@ -24,7 +24,11 @@ class ChallengeListView(ListView):
 
     # id=pkのExercise内のChallengeを取得
     def get_queryset(self) -> Any:
-        return ChallengeModel.objects.filter(exercise_title=self.kwargs['pk'])
+        # ExerciseModelのtitle="実戦問題"なら、is_practice=TrueのChallengeModelをExercise関係なく取得
+        if ExerciseModel.objects.get(pk=self.kwargs['pk']).exercise_title == "実戦問題集":
+            return ChallengeModel.objects.filter(is_practice=True)
+        else:
+            return ChallengeModel.objects.filter(exercise_title=self.kwargs['pk'])
 
     # id=pkのExerciseを取得
     def get_context_data(self, **kwargs: Any) -> Any:
