@@ -33,13 +33,13 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">トップページ</a>
+            <a class="nav-link" href="{%url 'index'%}">トップページ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">演習一覧</a>
+            <a class="nav-link" href="{%url 'exercise_list'%}">演習一覧</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">実践問題集</a>
+            <a class="nav-link" href="{%url 'exercise_detail' 6%}">実践問題集</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">よくある質問</a>
@@ -56,7 +56,7 @@
             <li><a class="dropdown-item" href="#">プロフィール</a></li>
             <li><a class="dropdown-item" href="#">基本設定</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">ログアウト</a></li>
+            <li><a class="dropdown-item" href="{%url 'logout'%}">ログアウト</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -64,10 +64,10 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="#">新規登録</a>
+          <a class="nav-link" href="{%url 'signup'%}">新規登録</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ログイン</a>
+          <a class="nav-link" href="{%url 'login'%}">ログイン</a>
         </li>
         {% endif %}   
         </ul>
