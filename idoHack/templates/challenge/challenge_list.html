@@ -12,10 +12,10 @@
   </li>
   {% if exercise_detail.exercise_title != "実戦問題集"%}
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="#">教科書</a>
+    <a class="nav-link" aria-current="page" href="{%url 'textbook' exercise_detail.id%}">教科書</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="#">解説</a>
+    <a class="nav-link" aria-current="page" href="{%url 'explanation' exercise_detail.id%}">解説</a>
   </li>
   {% endif %}
   <li class="nav-item">

@@ -26,8 +26,8 @@ class ExerciseModel(models.Model):
     exercise_discription = MDTextField(default="", verbose_name="説明") # 演習の説明
     visible = models.BooleanField(default=False, verbose_name="一般ユーザへの公開") # 演習が公開されているかどうか
 
-    textbook_url = models.URLField(blank=True, verbose_name="教科書URL") # 教科書のURL
-    explanation_url = models.URLField(blank=True, verbose_name="解説URL") # 解説のURL
+    textbook = MDTextField(blank=True, verbose_name="教科書") # 教科書のURL
+    explanation = MDTextField(blank=True, verbose_name="解説") # 解説のURL
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="作成日時") # 課題の作成日時
     updated_at = models.DateTimeField(auto_now=True, verbose_name="作成日時") # 課題の更新日時

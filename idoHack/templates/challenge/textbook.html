@@ -5,14 +5,14 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">{{exercise_detail.exercise_title}}</a>
+    <a class="nav-link" aria-current="page" href="{%url 'exercise_detail' exercise_detail.id%}">{{exercise_detail.exercise_title}}</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="{%url 'challenge_list' exercise_detail.id %}">課題</a>
   </li>
   {% if exercise_detail.exercise_title != "実戦問題集"%}
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="{%url 'textbook' exercise_detail.id%}">教科書</a>
+    <a class="nav-link active" aria-current="page" href="{%url 'textbook' exercise_detail.id%}">教科書</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="{%url 'explanation' exercise_detail.id%}">解説</a>
@@ -24,7 +24,7 @@
 </ul>
 
 
-<div id="md">{{exercise_detail.exercise_discription|markdown|safe}}</div>
+<div id="md">{{exercise_detail.textbook|markdown|safe}}</div>
 
 <hr>
 {% endblock %}

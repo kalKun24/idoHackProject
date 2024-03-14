@@ -75,3 +75,14 @@ class ChallengeDetailView(LoginRequiredMixin, DetailView):
 
         # 自分にリダイレクト
         return redirect('challenge_detail', pk=self.kwargs['pk'], pks=self.kwargs['pks'])
+
+
+class TextbookView(LoginRequiredMixin, DetailView):
+    model = ExerciseModel
+    template_name = 'challenge/textbook.html'
+    context_object_name = 'exercise_detail'
+
+class ExplanationView(LoginRequiredMixin, DetailView):
+    model = ExerciseModel
+    template_name = 'challenge/explanation.html'
+    context_object_name = 'exercise_detail'
