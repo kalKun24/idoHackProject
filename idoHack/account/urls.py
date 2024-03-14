@@ -5,12 +5,9 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('', include('challenge.urls')),
-    path('', include('account.urls')),
-    path('admin/', admin.site.urls),
-    path('mededitor/', include('mdeditor.urls')),
-
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('logout/', views.LogoutView, name='logout'),
+    path('signup', views.SignupView.as_view(), name='signup'),
 ]
 
 if settings.DEBUG:
