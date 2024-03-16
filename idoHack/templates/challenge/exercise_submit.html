@@ -37,7 +37,7 @@
             <th scope="row">{{forloop.counter}}</th>
             <td>{{submit.submit_time}}</td>
             <td>{{submit.challenge_title}}</td>
-            <td>{{submit.username}}</td>
+            <td><a href="{%url 'profile' submit.username%}">{{submit.username}}</a></td>
         </tr>
         {%endfor%}
   </tbody>
