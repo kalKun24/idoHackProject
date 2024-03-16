@@ -8,8 +8,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', views.LogoutView, name='logout'),
     path('signup', views.SignupView.as_view(), name='signup'),
-    path('profile/', views.ProfileView.as_view(), name='profile'),
     path('profile/edit/', views.ProfileEditView.as_view(), name='profile_edit'),
+    path('profile/<str:playername>', views.ProfileView.as_view(), name='profile'),
 ]
 
 if settings.DEBUG:

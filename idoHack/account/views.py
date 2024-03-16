@@ -33,7 +33,10 @@ class ProfileView(LoginRequiredMixin, ListView):
     context_object_name = 'profile_list'
 
     def get_queryset(self):
-        return CustomUser.objects.filter(username=self.request.user.username)
+        if CustomUser.objects.filter(username=self.kwargs['playername']).exists():
+            return CustomUser.objects.filter(username=self.kwargs['playername'])    
+        else:
+            return CustomUser.objects.filter(username=self.request.user.username)
     
 class ProfileEditView(LoginRequiredMixin, UpdateView):
     model = CustomUser
