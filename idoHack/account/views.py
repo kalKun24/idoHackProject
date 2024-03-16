@@ -26,3 +26,20 @@ class SignupView(CreateView):
         login(self.request, user)
         return response
     
+
+class ProfileView(LoginRequiredMixin, ListView):
+    model = CustomUser
+    template_name = 'account/profile.html'
+    context_object_name = 'profile_list'
+
+    def get_queryset(self):
+        return CustomUser.objects.filter(username=self.request.user.username)
+    
+class ProfileEditView(LoginRequiredMixin, UpdateView):
+    model = CustomUser
+    fields = ['username', 'email', 'biography', 'twitter_url', 'github_url', 'linkedin_url', 'country', 'occupation']
+    template_name = 'account/profile_edit.html'
+    success_url = reverse_lazy('profile')
+
+    def get_object(self):
+        return CustomUser.objects.get(username=self.request.user.username)

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>プロフィール</h3>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{profile_list.0.username}}</h5>
+    <p class="card-text">{{profile_list.0.biography|safe|linebreaks}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">メールアドレス：{{profile_list.0.email}}</li>
+    <li class="list-group-item">国・地域:{{profile_list.0.country}}</li>
+    <li class="list-group-item">職業:{{profile_list.0.occupation}}</li>
+  </ul>
+  <div class="card-body">
+    <a href="{{profile_list.0.twitter_url}}" class="card-link">X(Twitter)</a>
+    <a href="{{profile_list.0.github_url}}" class="card-link">Github</a>
+    <a href="{{profile_list.0.linkedin_url}}" class="card-link">Linkedin</a>
+  </div>
+</div>
+{% endblock %}
