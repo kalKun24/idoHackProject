@@ -40,7 +40,7 @@ class ProfileView(LoginRequiredMixin, ListView):
     
 class ProfileEditView(LoginRequiredMixin, UpdateView):
     model = CustomUser
-    fields = ['username', 'email', 'biography', 'twitter_url', 'github_url', 'linkedin_url', 'country', 'occupation']
+    fields = ['email', 'biography', 'twitter_url', 'github_url', 'linkedin_url', 'country', 'occupation']
     template_name = 'account/profile_edit.html'
     success_url = reverse_lazy('profile_edit')
 
