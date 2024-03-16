@@ -62,11 +62,11 @@ class ChallengeDetailView(LoginRequiredMixin, DetailView):
         if challenge.flag != flag:
             messages.add_message(request, messages.ERROR, "不正解です。")
             
-        elif SubmitModel.objects.filter(challenge_title=challenge, username=user).exists():
+        elif SubmitModel.objects.filter(challenge_title=challenge, uuid=user).exists():
             messages.add_message(request, messages.INFO, "正解です！(ただし、すでに回答済みです)")
 
         elif challenge.flag == flag:
-            submit = SubmitModel(challenge_title=challenge, username=user)
+            submit = SubmitModel(challenge_title=challenge, uuid=user)
             submit.save()
             user.total_score += challenge.score
             user.save()

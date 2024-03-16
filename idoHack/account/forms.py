@@ -11,4 +11,4 @@ class SignupForm(UserCreationForm):
 class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['email', 'biography', 'twitter_url', 'github_url', 'linkedin_url', 'country', 'occupation']
+        fields = ['username', 'email', 'biography', 'twitter_url', 'github_url', 'linkedin_url', 'country', 'occupation']

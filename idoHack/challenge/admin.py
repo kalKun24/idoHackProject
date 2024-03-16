@@ -39,9 +39,9 @@ class ChallengeAdmin(admin.ModelAdmin):
 
 
 class SubmitAdmin(admin.ModelAdmin):
-    list_display = ['username', 'challenge_title', 'submit_time']
+    list_display = ['uuid', 'challenge_title', 'submit_time']
     ordering = ['submit_time']
-    readonly_fields = ['username', 'challenge_title', 'submit_time']
+    readonly_fields = ['uuid', 'challenge_title', 'submit_time']
 
 admin.site.register(CategoryModel, CategoryAdmin)
 admin.site.register(ExerciseModel, ExerciseAdmin)

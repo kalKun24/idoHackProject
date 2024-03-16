@@ -72,7 +72,7 @@ class ChallengeModel(models.Model):
 
 class SubmitModel(models.Model):
         challenge_title = models.ForeignKey(ChallengeModel, to_field="challenge_title", on_delete=models.SET_NULL, null=True, verbose_name="課題") # 課題
-        username = models.ForeignKey(CustomUser, to_field="username", on_delete=models.SET_NULL, null=True, verbose_name="ユーザ") # ユーザ
+        uuid = models.ForeignKey(CustomUser, to_field="uuid", on_delete=models.CASCADE, null=True, verbose_name="UUID") # UUID
     
         submit_time = models.DateTimeField(auto_now_add=True, verbose_name="提出日時") # 提出日時
     
