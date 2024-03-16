@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>よくある質問</h2>
+{% for faq in faq_list%}
+<div class="card m-2">
+  <div class="card-header">
+    <h4>Q. {{ faq.question }}</h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{faq.answer}}</p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

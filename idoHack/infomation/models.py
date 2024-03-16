@@ -20,3 +20,15 @@ class InfomationModel(models.Model):
 
     class Meta:
         verbose_name_plural = "Infomation"
+
+class FrequentlyAskedQuestionModel(models.Model):
+    question = models.TextField(default="", verbose_name="質問")
+    answer = models.TextField(default="", verbose_name="回答")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="作成日時")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="更新日時")
+
+    def __str__(self):
+        return self.question
+
+    class Meta:
+        verbose_name_plural = "Frequently Asked Question"

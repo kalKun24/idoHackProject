@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('', include('challenge.urls')),
     path('', include('account.urls')),
+    path('', include('infomation.urls')),
     path('admin/', admin.site.urls),
     path('mededitor/', include('mdeditor.urls')),
 
