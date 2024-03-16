@@ -86,3 +86,27 @@ class ExplanationView(LoginRequiredMixin, DetailView):
     model = ExerciseModel
     template_name = 'challenge/explanation.html'
     context_object_name = 'exercise_detail'
+
+
+# Exerciseごとの提出状況
+class SubmitView(LoginRequiredMixin, ListView):
+    model = SubmitModel
+    template_name = 'challenge/exercise_submit.html'
+    context_object_name = 'submit_list'
+
+    # id=pkのExercise_titleを持つChallenge_titleのSubmitを取得
+    def get_queryset(self) -> Any:
+        exercise = ExerciseModel.objects.get(pk=self.kwargs['pk'])
+        challenge = ChallengeModel.objects.filter(exercise_title=exercise)
+
+        # Challenge_titleのSubmitを取得
+        submit_list = []
+        for c in challenge:
+            submit_list += SubmitModel.objects.filter(challenge_title=c)
+        return submit_list
+
+    # id=pkのExerciseを取得
+    def get_context_data(self, **kwargs: Any) -> Any:
+        context = super().get_context_data(**kwargs)
+        context['exercise_detail'] = ExerciseModel.objects.get(pk=self.kwargs['pk'])
+        return context

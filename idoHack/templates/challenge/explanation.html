@@ -8,18 +8,18 @@
     <a class="nav-link" aria-current="page" href="{%url 'exercise_detail' exercise_detail.id%}">{{exercise_detail.exercise_title}}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="{%url 'challenge_list' exercise_detail.id %}">課題</a>
+    <a class="nav-link" aria-current="page" href="{%url 'challenge_list' exercise_detail.id%}">課題</a>
   </li>
   {% if exercise_detail.exercise_title != "実戦問題集"%}
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="{%url 'textbook' exercise_detail.id%}">教科書</a>
+    <a class="nav-link " aria-current="page" href="{%url 'textbook' exercise_detail.id%}">教科書</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="{%url 'explanation' exercise_detail.id%}">解説</a>
   </li>
   {% endif %}
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="#">ランキング</a>
+    <a class="nav-link " aria-current="page" href="{%url 'submit' exercise_detail.id%}">正解者</a>
   </li>
 </ul>
 

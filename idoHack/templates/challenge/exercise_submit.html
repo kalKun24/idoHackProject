@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{%url 'exercise_detail' exercise_detail.id%}">{{exercise_detail.exercise_title}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{%url 'challenge_list' exercise_detail.id%}">課題</a>
+  </li>
+  {% if exercise_detail.exercise_title != "実戦問題集"%}
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{%url 'textbook' exercise_detail.id%}">教科書</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href="{%url 'explanation' exercise_detail.id%}">解説</a>
+  </li>
+  {% endif %}
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{%url 'submit' exercise_detail.id%}">正解者</a>
+  </li>
+</ul>
+
+<table class="table table-striped table-hover m-1">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">提出日時</th>
+      <th scope="col">課題</th>
+      <th scope="col">回答者</th>
+    </tr>
+  </thead>
+  <tbody>
+        {%for submit in submit_list%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{submit.submit_time}}</td>
+            <td>{{submit.challenge_title}}</td>
+            <td>{{submit.username}}</td>
+        </tr>
+        {%endfor%}
+  </tbody>
+</table>
+
+<hr>
+
+{% endblock %}

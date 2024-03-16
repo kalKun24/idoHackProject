@@ -77,7 +77,7 @@ class SubmitModel(models.Model):
         submit_time = models.DateTimeField(auto_now_add=True, verbose_name="提出日時") # 提出日時
     
         def __str__(self):
-            return self.challenge
+            return str(self.challenge_title)
     
         class Meta:
             verbose_name = 'Submit'
