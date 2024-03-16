@@ -46,3 +46,12 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         return CustomUser.objects.get(username=self.request.user.username)
+
+class TotalScoreRankingView(ListView):
+    model = CustomUser
+    template_name = 'account/totalscore_ranking.html'
+    context_object_name = 'ranking_list'
+    paginate_by = 100
+
+    def get_queryset(self):
+        return CustomUser.objects.order_by('-total_score')

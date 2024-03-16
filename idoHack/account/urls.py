@@ -10,6 +10,7 @@ urlpatterns = [
     path('signup', views.SignupView.as_view(), name='signup'),
     path('profile/edit/', views.ProfileEditView.as_view(), name='profile_edit'),
     path('profile/<str:playername>', views.ProfileView.as_view(), name='profile'),
+    path('totalscore_ranking', views.TotalScoreRankingView.as_view(), name='totalscore_ranking'),
 ]
 
 if settings.DEBUG:
