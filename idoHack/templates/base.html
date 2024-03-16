@@ -53,8 +53,7 @@
             {{user.username}}
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">プロフィール</a></li>
-            <li><a class="dropdown-item" href="#">基本設定</a></li>
+            <li><a class="dropdown-item" href="{%url 'profile' user.username%}">プロフィール</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{%url 'logout'%}">ログアウト</a></li>
           </ul>
