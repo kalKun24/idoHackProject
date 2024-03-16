@@ -5,7 +5,7 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.IndexView.as_view(), name='index'),
     path('', include('challenge.urls')),
     path('', include('account.urls')),
     path('', include('infomation.urls')),
