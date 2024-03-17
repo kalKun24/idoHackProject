@@ -31,6 +31,42 @@
  
 <div id="md">{{challenge_detail.discription|markdown|safe}}</div>
 
+
+
+{% if challenge_detail.hint_one %}
+<div class="btn-group">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    ヒントその1
+  </button>
+  <ul class="dropdown-menu">
+    <li><p class="dropdown-item">{{challenge_detail.hint_one}}</p></li>
+  </ul>
+</div>
+{% endif %}
+
+{% if challenge_detail.hint_two %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ヒントその2
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><p class="dropdown-item">{{challenge_detail.hint_two}}</p></li>
+  </ul>
+</div>
+{% endif %}
+
+{% if challenge_detail.hint_three %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+    ヒントその3
+  </button>
+  <ul class="dropdown-menu dropdown-menu-lg-end">
+    <li><p class="dropdown-item">{{challenge_detail.hint_three}}</p></li>
+  </ul>
+</div>
+{% endif %}
+<br>
+<br>
 <!-- ToDo: FLAG提出ボタンを作成 -->
 <form method="POST">
   {% csrf_token %}
