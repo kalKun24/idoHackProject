@@ -12,6 +12,10 @@ class ExerciseListView(LoginRequiredMixin, ListView):
     template_name = 'challenge/exercise_list.html'
     context_object_name = 'exercise_list'
 
+    # visivle=TrueのExerciseを取得
+    def get_queryset(self) -> Any:
+        return ExerciseModel.objects.filter(visible=True)
+
 
 class ExerciseDetailView(LoginRequiredMixin, DetailView):
     model = ExerciseModel
@@ -27,9 +31,9 @@ class ChallengeListView(LoginRequiredMixin, ListView):
     def get_queryset(self) -> Any:
         # ExerciseModelのtitle="実戦問題"なら、is_practice=TrueのChallengeModelをExercise関係なく取得
         if ExerciseModel.objects.get(pk=self.kwargs['pk']).exercise_title == "実戦問題集":
-            return ChallengeModel.objects.filter(is_practice=True)
+            return ChallengeModel.objects.filter(is_practice=True, visible=True)
         else:
-            return ChallengeModel.objects.filter(exercise_title=self.kwargs['pk'])
+            return ChallengeModel.objects.filter(exercise_title=self.kwargs['pk'], visible=True)
 
     # id=pkのExerciseを取得
     def get_context_data(self, **kwargs: Any) -> Any:
