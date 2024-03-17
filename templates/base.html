@@ -39,7 +39,7 @@
             <a class="nav-link" href="{%url 'exercise_list'%}">演習一覧</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{%url 'exercise_detail' 6%}">実践問題集</a>
+            <a class="nav-link" href="{%url 'exercise_detail' 2%}">実践問題集</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{%url 'totalscore_ranking'%}">ランキング</a>
@@ -117,6 +117,9 @@
         tex: true,
         flowChart: true,
         sequenceDiagram: true,
+	lineWrapping: True,  # lineWrapping
+        lineNumbers: True,  # lineNumbers
+        language: 'en'  # zh / en / es 
       });
       $(".reference-link").each(function (i, obj) {
         console.log(obj)

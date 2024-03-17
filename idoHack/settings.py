@@ -1,22 +1,21 @@
 from pathlib import Path
-import environ
 import os
 from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
-env.read_env(os.path.join(BASE_DIR, '.env'))
+# SECRET_KEYを.envから取得
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+# DEBUGを.envから取得
+# envファイルにTrue、Falseと書くとDjangoがString型と認識してしまいます
+# os.environ.get("DEBUG") == "True"を満たすとboolean型のTrueになり、
+# env内のDEBUGがTrue以外ならFalseになります
+DEBUG = os.environ.get("DEBUG") == "True"
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG', default=False)
-
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTSを.envから取得
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 INSTALLED_APPS = [
@@ -68,7 +67,18 @@ WSGI_APPLICATION = 'idoHack.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(),
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        # コンテナ内の環境変数をDATABASESのパラメータに反映
+        "NAME": os.environ.get("MYSQL_DATABASE"),
+        "USER": os.environ.get("MYSQL_USER"),
+        "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
+        "HOST": os.environ.get("MYSQL_HOST"),
+        "PORT": 3306,
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
 }
 
 # Password validation
@@ -107,7 +117,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
